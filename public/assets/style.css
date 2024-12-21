@@ -1,0 +1,110 @@
+body {
+  --heading-font: "Marcellus", Roboto, sans-serif;
+  --heading-font-weight: 400;
+  --heading-color: #111;
+  --heading-line-height: 1.24;
+
+  --swiper-theme-color: #8C907E;
+
+  /* bootstrap */
+  --bs-body-font-family: "Jost", Roboto, sans-serif;
+  --bs-body-font-size: 18px;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #8f8f8f;
+  --bs-body-color-rgb: 143, 143, 143;
+
+  --bs-primary: #8C907E;
+  --bs-secondary: #6c757d;
+  --bs-black: #111;
+  --bs-light: #F1F1F0;
+  --bs-dark: #212529;
+  --bs-gray: #9aa1a7;
+  --bs-gray-dark: #51565b;
+
+  --bs-primary-rgb: 140, 144, 126;
+  --bs-secondary-rgb: 108, 117, 125;
+  --bs-black-rgb: 17, 17, 17;
+  --bs-light-rgb: 241, 241, 240;
+  --bs-dark-rgb: 33, 37, 41;
+
+  --bs-link-color: #111;
+  --bs-link-color-rgb: 17, 17, 17;
+  --bs-link-decoration: underline;
+  --bs-link-hover-color: #111;
+  --bs-link-hover-color-rgb: 17, 17, 17;
+}
+
+body {
+  letter-spacing: 0.03rem;
+}
+
+/*--- Image hover Effects
+-----------------------------------------------*/
+.image-zoom-effect {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-zoom-effect .image-holder {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  transform: scale(1);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-zoom-effect:hover .image-holder {
+  transform: scale(0.95);
+}
+
+.image-zoom-effect img {
+  transform: scale(1);
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 0;
+}
+
+.image-zoom-effect:hover img {
+  transform: scale(1.1);
+}
+
+
+/* Link Effect
+ - Place anywhere you want your link to animate
+ - Add data-after="Any text" to the link within the class
+ - Use span within the anchor tag for the effect to work
+------------------------------------------------------------- */
+.link-effect a {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  transition: transform 0.5s;
+  display: block;
+}
+
+.link-effect a::after {
+  content: attr(data-after);
+  display: inline-block;
+  transform: translateY(100%);
+  position: absolute;
+  left: 0;
+  font-size: 1rem;
+  text-align: inherit;
+  text-transform: uppercase;
+  transition: inherit;
+}
+
+.link-effect a>span {
+  display: inline-block;
+  transform: translateY(0%);
+  transition: inherit;
+}
+
+.link-effect:hover a>span {
+  transform: translateY(-100%);
+}
+
+.link-effect:hover a::after {
+  transform: translateY(0%);
+}

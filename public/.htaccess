@@ -1,0 +1,3 @@
+errorDOCUMENT 404 http://localhost/web/app/views/errors/404.php
+
+errorDOCUMENT 500 http://localhost/web/app/views/errors/500.php
