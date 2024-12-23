@@ -54,7 +54,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="index.html" class="dropdown-item item-anchor">Management Users </a>
+                                            <a href="/user/index/" class="dropdown-item item-anchor">Management Users </a>
                                         </li>
                                     </ul>
                                 </li>
