@@ -1,3 +1,10 @@
 errorDOCUMENT 404 http://localhost/web/app/views/errors/404.php
 
 errorDOCUMENT 500 http://localhost/web/app/views/errors/500.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
