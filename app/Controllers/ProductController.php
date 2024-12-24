@@ -2,36 +2,36 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
+use App\Models\Product;
 use App\Controller;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
-    private $userModel;
+    private $productModel;
 
     public function __construct()
     {
-        $this->userModel = new User();
+        $this->productModel = new Product();
     }
 
     public function index(){
-        $this->render('users\index', []);
+        $this->render('products\index', []);
     }
 
-    public function userList()
+    public function productList()
     {
         // Fetch all users and display them in a view
-        $users = $this->userModel->getAllUsers();
+        $products = $this->productModel->getAllProducts();
         
-        $this->render('users\user-list', ['users' => $users]);
+        $this->render('products\product-list', ['products' => $products]);
     }
 
     public function show($userId)
     {
         // Fetch a single user by ID and display in a view
-        $user = $this->userModel->getUserById($userId);
+        //$user = $this->productModel->getUserById($userId);
         
-        $this->render('users\user-form', ['user' => $user]);
+        // $this->render('users\user-form', ['user' => $user]);
 
     }
 
@@ -47,37 +47,37 @@ class UserController extends Controller
     }
 
     private function processForm(){
-            // Retrieve form data
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $email = $_POST['email'];
+            // // Retrieve form data
+            // $username = $_POST['username'];
+            // $password = $_POST['password'];
+            // $email = $_POST['email'];
 
-            // Call the model to create a new user
-            $user = $this->userModel->createUser($username, $password, $email);
+            // // Call the model to create a new user
+            // $user = $this->productModel->createProduct($username, $password, $email);
 
-            if ($user) {
-                // Redirect to the user list page or show a success message
-                header('Location: /user/index');
-                exit();
-            } else {
-                // Handle the case where the user creation failed
-                echo 'User creation failed.';
-            }
+            // if ($user) {
+            //     // Redirect to the user list page or show a success message
+            //     header('Location: /user/index');
+            //     exit();
+            // } else {
+            //     // Handle the case where the user creation failed
+            //     echo 'User creation failed.';
+            // }
     }
        
 
     public function update($userId)
     {
-        // Handle form submission to update a user
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->processFormUpdate($userId);            
-        } else {
-            // Fetch the user data and display the form to update
-            $user = $this->userModel->getUserById($userId);       
+        // // Handle form submission to update a user
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //     $this->processFormUpdate($userId);            
+        // } else {
+        //     // Fetch the user data and display the form to update
+        //     $user = $this->productModel->getUserById($userId);       
             
-            $this->render('users\user-form', ['user' => $user]);
+        //     $this->render('users\user-form', ['user' => $user]);
 
-        }
+        // }
 
         
     }
@@ -91,7 +91,7 @@ class UserController extends Controller
        
         
         // Call the model to update the user
-        $user = $this->userModel->updateUser($userId, $username, $password, $email);
+        $user = $this->productModel->updateUser($userId, $username, $password, $email);
 
         if ($user) {
             // Redirect to the user list page or show a success message
@@ -106,14 +106,14 @@ class UserController extends Controller
     public function delete($userId)
     {
         // Call the model to delete the user
-        $this->userModel->deleteUser($userId);
+        $this->productModel->deleteUser($userId);
 
         // Redirect to the user list page after deletion
-        header('Location: user/index');
+        header('Location: /index.php');
     }
 
     public function signin(){        
-        $this->render('users/signin', []);
+        $this->render('users\signin', []);
     }
 
     public function logout(){
