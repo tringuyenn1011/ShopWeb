@@ -12,7 +12,6 @@ $router = new Router();
 
 // Add routes
 $router->addRoute('/\//', [new UserController(), 'index']);
-$router->addRoute('/\/user/', [new UserController(), 'userList']);
 $router->addRoute('/\/user\/index/', [new UserController(), 'userList']);
 $router->addRoute('/\/product\/index/', [new ProductController(), 'productList']);
 //$router->addRoute('/\/user/', [new UserController(), 'index']);

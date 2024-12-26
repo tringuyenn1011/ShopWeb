@@ -50,7 +50,7 @@
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                                     <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
                                         <li>
-                                            <a href="/product/index/" class="dropdown-item item-anchor">Management Products
+                                            <a href="/product/index" class="dropdown-item item-anchor">Management Products
                                             </a>
                                         </li>
                                         <li>

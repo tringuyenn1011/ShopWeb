@@ -45,28 +45,45 @@ class User
         return $result->fetch_assoc();
     }
 
-    public function createUser($username, $password, $email)
+    public function createUser($fullname,$username, $password, $dayofbirth, $gender, $phonenumber, $vip)
     {
-        
+        $fullname = $this->mysqli->real_escape_string($fullname);
         $username = $this->mysqli->real_escape_string($username);
         $password = $this->mysqli->real_escape_string($password);
-        $email = $this->mysqli->real_escape_string($email);
+        $dayofbirth = $this->mysqli->real_escape_string($dayofbirth);
+        $gender = $this->mysqli->real_escape_string($gender);
+        $phonenumber = $this->mysqli->real_escape_string($phonenumber);
+        $vip = $this->mysqli->real_escape_string($vip);
+
+        if (!empty($dayofbirth)) {
+            $dayofbirth = \DateTime::createFromFormat('d/m/Y', $dayofbirth)->format('Y-m-d');
+        }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        return $this->mysqli->query("INSERT INTO users (username, password_input, email) VALUES ('$username', '$hashedPassword', '$email')");
+        return $this->mysqli->query("INSERT INTO users (fullname, username, password, dayofbirth, gender, phonenumber, vip) 
+                            VALUES ('$fullname','$username', '$hashedPassword', '$dayofbirth', '$gender', '$phonenumber', '$vip')");
     }
 
-    public function updateUser($userId, $username, $password, $email)
+    public function updateUser($userId, $fullname,$username, $password, $dayofbirth, $gender, $phonenumber, $vip)
     {
         $userId = $this->mysqli->real_escape_string($userId);
+        $fullname = $this->mysqli->real_escape_string($fullname);
         $username = $this->mysqli->real_escape_string($username);
         $password = $this->mysqli->real_escape_string($password);
-        $email = $this->mysqli->real_escape_string($email);
+        $dayofbirth = $this->mysqli->real_escape_string($dayofbirth);
+        $gender = $this->mysqli->real_escape_string($gender);
+        $phonenumber = $this->mysqli->real_escape_string($phonenumber);
+        $vip = $this->mysqli->real_escape_string($vip);
+
+        if (!empty($dayofbirth)) {
+            $dayofbirth = \DateTime::createFromFormat('d/m/Y', $dayofbirth)->format('Y-m-d');
+        }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        return $this->mysqli->query("UPDATE users SET username='$username', password_input='$hashedPassword', email='$email' WHERE id=$userId");
+        return $this->mysqli->query("UPDATE users SET fullname='$fullname', username='$username', password='$hashedPassword', 
+                                        dayofbirth='$dayofbirth', gender='$gender', phonenumber='$phonenumber', vip='$vip' WHERE id=$userId");
     }
 
     public function deleteUser($userId)

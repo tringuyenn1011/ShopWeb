@@ -31,7 +31,7 @@ class UserController extends Controller
         // Fetch a single user by ID and display in a view
         $user = $this->userModel->getUserById($userId);
         
-        $this->render('users\user-form', ['user' => $user]);
+        $this->render('users\user-detail', ['user' => $user]);
 
     }
 
@@ -48,20 +48,25 @@ class UserController extends Controller
 
     private function processForm(){
             // Retrieve form data
+            $fullname = $_POST['fullname'];
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $email = $_POST['email'];
+            $dayofbirth = $_POST['dayofbirth'];
+            $gender = $_POST['gender'];
+            $phonenumber = $_POST['phonenumber'];
+            $vip = $_POST['vip'];
 
-            // Call the model to create a new user
-            $user = $this->userModel->createUser($username, $password, $email);
-
-            if ($user) {
-                // Redirect to the user list page or show a success message
+            $user = (new User())->getUserByUsername($username);
+            if($user == null){
+                // Call the model to create a new user
+                $user = $this->userModel->createUser($fullname, $username, $password, $dayofbirth, $gender, $phonenumber, $vip);
                 header('Location: /user/index');
                 exit();
-            } else {
-                // Handle the case where the user creation failed
-                echo 'User creation failed.';
+            }else {
+                session_start();
+                $_SESSION['flash_message'] = 'Đã trùng username';
+                header('Location: /user/create');
+                exit();
             }
     }
        
@@ -85,13 +90,17 @@ class UserController extends Controller
     private function processFormUpdate($userId){
 
         // Retrieve form data
+        $fullname = $_POST['fullname'];
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $email = $_POST['email'];
+        $dayofbirth = $_POST['dayofbirth'];
+        $gender = $_POST['gender'];
+        $phonenumber = $_POST['phonenumber'];
+        $vip = $_POST['vip'];
        
         
         // Call the model to update the user
-        $user = $this->userModel->updateUser($userId, $username, $password, $email);
+        $user = $this->userModel->updateUser($userId, $fullname, $username, $password, $dayofbirth, $gender, $phonenumber, $vip);
 
         if ($user) {
             // Redirect to the user list page or show a success message

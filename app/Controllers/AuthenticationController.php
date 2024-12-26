@@ -9,13 +9,13 @@ class AuthenticationController {
     }
 
     public function authenticate() {
-        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
             $user = (new User())->getUserByUsername($username);
-            if ($user && password_verify($password, $user['password_input'])) {
+            
+            if ($user && password_verify($password, $user['password'])) {
                 // User authenticated, save user to session
                 session_start();
                 $_SESSION['currentUser'] = $user;
