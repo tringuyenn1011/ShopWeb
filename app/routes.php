@@ -6,7 +6,6 @@ use App\Router;
 use App\Controllers\UserController;
 use App\Controllers\ProductController;
 
-
 // Usage:
 $router = new Router();
 
@@ -24,3 +23,4 @@ $router->addRoute('/\/auth\/validate/', [new AuthenticationController(), 'authen
 $router->addRoute('/\/user\/logout/', [new UserController(), 'logout']);
 
 $router->addRoute('/\/home\/index/', [new HomeController(), 'index']);
+$router->addRoute('/\/home\/banner/', [new HomeController(), 'banner']); 

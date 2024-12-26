@@ -122,9 +122,9 @@ body {
   z-index: 1050; /* Đảm bảo modal hiển thị trên backdrop */
 }
 
-/* .modal-backdrop {
+.modal-backdrop {
   z-index: 1040; 
-} */
+}
 
 /* Nội dung của modal */
 .modal-content {

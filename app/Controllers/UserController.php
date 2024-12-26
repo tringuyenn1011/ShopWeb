@@ -13,7 +13,6 @@ class UserController extends Controller
     {
         $this->userModel = new User();
     }
-
     public function index(){
         $this->render('users\index', []);
     }
@@ -70,7 +69,6 @@ class UserController extends Controller
             }
     }
        
-
     public function update($userId)
     {
         // Handle form submission to update a user
@@ -82,9 +80,7 @@ class UserController extends Controller
             
             $this->render('users\user-form', ['user' => $user]);
 
-        }
-
-        
+        } 
     }
     
     private function processFormUpdate($userId){
