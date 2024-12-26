@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
-    <h1>User Index Page</h1>   
-    
-    <?php
+<h1>User Index Page</h1>
+
+<?php
     session_start();
 
     if(isset($_SESSION['flash_message'])) {
@@ -30,24 +30,27 @@
     }
     */
     
-
     // Include your header or common HTML structure here
 
     // Display login or logout button based on session
     if (isUserLoggedIn()) {
         echo '<p>You have logged in</p>';
         echo '<h2>User index page content</h2>';
-        echo '<form method="post" action="../user/logout">';
+        //echo '<form method="post" action="../user/logout">';
+        echo '<form method="post" action="/user/logout">';
+
         echo '<input type="submit" name="logout" value="Logout">';
         echo '</form>';
     } else {
         echo '<p>You need to login to view content</p>';
-        echo '<form method="get" action="../user/signin">';
+        // echo '<form method="get" action="../user/signin">';
+        echo '<form method="post" action="/user/signin">';
+
         echo '<input type="submit" name="login" value="Login">';
         echo '</form>';
     }
 
     ?>
-    <a href="/user/create">Add User</a>
+<a href="/user/create">Add User</a>
 <?php $content = ob_get_clean(); ?>
 <?php include (__DIR__ . '/../../../templates/layout.php'); ?>

@@ -15,7 +15,9 @@ class AuthenticationController {
             $password = $_POST['password'];
 
             $user = (new User())->getUserByUsername($username);
-            if ($user && password_verify($password, $user['password_input'])) {
+            //if ($user && password_verify($password, $user['password_input'])) {
+            if ($user && $password === $user['password']) {
+
                 // User authenticated, save user to session
                 session_start();
                 $_SESSION['currentUser'] = $user;

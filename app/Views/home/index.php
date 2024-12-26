@@ -1,8 +1,12 @@
+<?php
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <title>Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -54,7 +58,8 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/user/index/" class="dropdown-item item-anchor">Management Users </a>
+                                            <a href="/user/index/" class="dropdown-item item-anchor">Management Users
+                                            </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -71,15 +76,32 @@
                 </div>
                 <div class="col-3 col-lg-auto">
                     <ul class="list-unstyled d-flex m-0">
-                        <li class="d-none d-lg-block">
-                            <a href="index.html" class="text-uppercase mx-3">Wishlist <span
+                        <!-- <li class="d-none d-lg-block">
+                            <form method="post" action="/user/logout">
+                                <input type="submit" name="logout" value="Logout">
+                            </form> -->
+                        <!-- <a href="../user/index" class="text-uppercase mx-3">Wishlist <span
                                     class="wishlist-count">(0)</span>
-                            </a>
-                        </li>
+                            </a> -->
+                        <!-- </li>
                         <li class="d-none d-lg-block">
                             <a href="index.html" class="text-uppercase mx-3">Login
                             </a>
-                        </li>
+                        </li> -->
+                        <?php
+                        if (isset($_SESSION['currentUser'])) {
+                            echo '<li class="d-none d-lg-block">
+                            <form method="post" action="/user/logout">
+                                <input type="submit" name="logout" value="Logout">
+                            </form>
+                            </li>';
+                        } else {
+                            echo '<li class="d-none d-lg-block">
+                            <a href="/user/signin" class="text-uppercase mx-3">Login</a>
+                            </li>';
+                        }
+                        ?>
+
                     </ul>
                 </div>
             </div>
@@ -89,10 +111,9 @@
     <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
-                <h4 class="text-uppercase">Our New Arrivals</h4>
-                <a href="index.html" class="btn-link">View All Products</a>
+                <h4 class="text-uppercase">Promotional programs</h4>
             </div>
-            <div class="swiper product-swiper open-up" data-aos="zoom-out">
+            <!-- <div class="swiper product-swiper open-up" data-aos="zoom-out">
                 <div class="swiper-wrapper d-flex">
                     <div class="swiper-slide">
                         <div class="product-item image-zoom-effect link-effect">
@@ -146,7 +167,18 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+            <?php
+
+            require_once 'banner.php';
+            ?>
+
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+                <h4 class="text-uppercase">List Products</h4>
+                <a href="index.html" class="btn-link">View All Products</a>
             </div>
+
         </div>
     </section>
 
