@@ -17,6 +17,7 @@ $router->addRoute('/\/product\/index/', [new ProductController(), 'productList']
 $router->addRoute('/\/user\/show\/(\d+)/', [new UserController(), 'show']);
 $router->addRoute('/\/user\/create/', [new UserController(), 'create']);
 $router->addRoute('/\/user\/update\/(\d+)/', [new UserController(), 'update']);
+$router->addRoute('/\/product\/update\/(\d+)/', [new ProductController(), 'update']);
 $router->addRoute('/\/user\/delete\/(\d+)/', [new UserController(), 'delete']);
 $router->addRoute('/\/user\/signin/', [new UserController(), 'signin']);
 $router->addRoute('/\/auth\/validate/', [new AuthenticationController(), 'authenticate']);

@@ -58,22 +58,22 @@ class Product
         return $this->mysqli->query("INSERT INTO products (productName, category, price, detail, urlImage) VALUES ('$productName', '$category', '$price', '$detail', '$urlImage')");
     }
 
-    public function updateUser($userId, $username, $password, $email)
+    public function updateProduct($productId, $productname, $category, $price, $detail, $urlimage)
     {
-        $userId = $this->mysqli->real_escape_string($userId);
-        $username = $this->mysqli->real_escape_string($username);
-        $password = $this->mysqli->real_escape_string($password);
-        $email = $this->mysqli->real_escape_string($email);
+        $productId = $this->mysqli->real_escape_string($productId);
+        $productname = $this->mysqli->real_escape_string($productname);
+        $category = $this->mysqli->real_escape_string($category);
+        $price = $this->mysqli->real_escape_string($price);
+        $detail = $this->mysqli->real_escape_string($detail);
+        $urlimage = $this->mysqli->real_escape_string($urlimage);
 
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        return $this->mysqli->query("UPDATE users SET username='$username', password_input='$hashedPassword', email='$email' WHERE id=$userId");
+        return $this->mysqli->query("UPDATE products SET productname='$productname', category='$category', price='$price', detail='$detail', urlimage='$urlimage' WHERE id=$productId");
     }
 
-    public function deleteUser($userId)
+    public function deleteProduct($productId)
     {
-        $userId = $this->mysqli->real_escape_string($userId);
-        $this->mysqli->query("DELETE FROM users WHERE id=$userId");
+        $productId = $this->mysqli->real_escape_string($productId);
+        $this->mysqli->query("DELETE FROM products WHERE id=$productId");
     }
 }
 

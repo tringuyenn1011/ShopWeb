@@ -2,18 +2,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="detailModalLabel">User Details</h5>
+                <h5 class="modal-title" id="detailModalLabel">Product Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p><strong>ID:</strong> <span id="modalId"></span></p>
-                <p><strong>Họ và tên:</strong> <span id="modalFullname"></span></p>
-                <p><strong>Tên tài khoản:</strong> <span id="modalUsername"></span></p>
-                <!-- <p><strong>Mật khẩu:</strong> <span id="modalPassword"></span></p> -->
-                <p><strong>Ngày sinh:</strong> <span id="modalDayofbirth"></span></p>
-                <p><strong>Giới tính:</strong> <span id="modalGender"></span></p>
-                <p><strong>Số điện thoại:</strong> <span id="modalPhonenumber"></span></p>
-                <p><strong>Vip:</strong> <span id="modalVip"></span></p>
+                <p><strong>Tên sản phẩm:</strong> <span id="modalProductname"></span></p>
+                <p><strong>Phân loại:</strong> <span id="modalCategory"></span></p>
+                <p><strong>Giá:</strong> <span id="modalPrice"></span></p>
+                <p><strong>Mô tả:</strong> <span id="modalDetail"></span></p>
+                <p><strong>Link ảnh:</strong> <span id="modalUrlimage"></span></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -66,36 +66,38 @@ class ProductController extends Controller
     }
        
 
-    public function update($userId)
+    public function update($productId)
     {
-        // // Handle form submission to update a user
-        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //     $this->processFormUpdate($userId);            
-        // } else {
-        //     // Fetch the user data and display the form to update
-        //     $user = $this->productModel->getUserById($userId);       
+        // Handle form submission to update a user
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->processFormUpdate($productId);            
+        } else {
+            // Fetch the user data and display the form to update
+            $product = $this->productModel->getProductById($productId);       
             
-        //     $this->render('users\user-form', ['user' => $user]);
+            $this->render('products\product-form', ['product' => $product]);
 
-        // }
+        }
 
         
     }
     
-    private function processFormUpdate($userId){
+    private function processFormUpdate($productId){
 
         // Retrieve form data
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
+        $productname = $_POST['productname'];
+        $category = $_POST['category'];
+        $price = $_POST['price'];
+        $detail = $_POST['detail'];
+        $urlimage = $_POST['urlimage'];
        
         
         // Call the model to update the user
-        $user = $this->productModel->updateUser($userId, $username, $password, $email);
+        $product = $this->productModel->updateProduct($productId, $productname, $category, $price, $detail, $urlimage);
 
-        if ($user) {
+        if ($product) {
             // Redirect to the user list page or show a success message
-            header('Location: /user/index');
+            header('Location: /product/index');
             exit();
         } else {
             // Handle the case where the user creation failed
@@ -103,13 +105,13 @@ class ProductController extends Controller
         }
     }
 
-    public function delete($userId)
+    public function delete($productId)
     {
         // Call the model to delete the user
-        $this->productModel->deleteUser($userId);
+        $this->productModel->deleteProduct($productId);
 
         // Redirect to the user list page after deletion
-        header('Location: /index.php');
+        header('Location: product/index');
     }
 
     public function signin(){        

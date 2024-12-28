@@ -22,7 +22,7 @@
                     <td><?php echo ($user['vip']); ?></td>
                     <td>
                         <a href="#" 
-                            class="btn btn-info btn-sm view-user" 
+                            class="btn btn-info btn-sm view-detail" 
                             data-id="<?= $user['id'] ?>" 
                             data-fullname="<?= $user['fullname'] ?>" 
                             data-username="<?= $user['username'] ?>" 
