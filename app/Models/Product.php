@@ -44,18 +44,18 @@ class Product
     //     return $result->fetch_assoc();
     // }
 
-    public function createProduct($productName, $category, $price, $detail, $urlImage)
+    public function createProduct($productname, $category, $price, $detail, $urlimage)
     {
         
-        $productName = $this->mysqli->real_escape_string($productName);
+        $productName = $this->mysqli->real_escape_string($productname);
         $category = $this->mysqli->real_escape_string($category);
         $price = $this->mysqli->real_escape_string($price);
         $detail = $this->mysqli->real_escape_string($detail);
-        $urlImage = $this->mysqli->real_escape_string($urlImage);
+        $urlImage = $this->mysqli->real_escape_string($urlimage);
 
         //$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        return $this->mysqli->query("INSERT INTO products (productName, category, price, detail, urlImage) VALUES ('$productName', '$category', '$price', '$detail', '$urlImage')");
+        return $this->mysqli->query("INSERT INTO products (productname, category, price, detail, urlimage) VALUES ('$productname', '$category', '$price', '$detail', '$urlimage')");
     }
 
     public function updateProduct($productId, $productname, $category, $price, $detail, $urlimage)

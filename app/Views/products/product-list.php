@@ -7,8 +7,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Product Name</th>
-                    <th class="filter-header" data-filter="category">Category</th>
-                    <th>Price</th>
+                    <th class="filter-header" data-filter="category">Category <span class="arrow">&#9660;</span></th>
+                    <th class="filter-header" data-filter="price">Price <span class="arrow">&#9660;</span></th>
                     <th>Detail</th>
                     <th>UrlImage</th>
                     <th>Action</th>
@@ -56,6 +56,12 @@
         <div data-category="shirt">Shirt</div>
         <div data-category="pant">Pant</div>
         <div data-category="hat">Hat</div>
+    </div>
+
+    <div id="priceFilter" class="filter-dropdown" style="display: none;">
+        <div data-price="default">Mặc định</div>
+        <div data-price="asc">Tăng dần</div>
+        <div data-price="desc">Giảm dần</div>
     </div>
 
     <!-- <ul>

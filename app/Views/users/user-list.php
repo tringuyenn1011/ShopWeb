@@ -5,10 +5,10 @@
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Họ và tên</th>
+                    <th class="filter-header" data-filter="name">Họ và Tên <span class="arrow">&#9660;</span></th>
                     <th>Tên tài khoản</th>
                     <th>Số điện thoại</th>
-                    <th>Vip</th>
+                    <th class="filter-header" data-filter="vip">Vip <span class="arrow">&#9660;</span></th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -41,6 +41,19 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+    </div>
+
+    <!-- Dropdowns -->
+    <div id="vipFilter" class="filter-dropdown" style="display: none;">
+        <div data-vip="all">All</div>
+        <div data-vip="vip">Vip</div>
+        <div data-vip="không">Không</div>
+    </div>
+
+    <div id="nameFilter" class="filter-dropdown" style="display: none;">
+        <div data-name="default">Mặc định</div>
+        <div data-name="asc">A → Z</div>
+        <div data-name="desc">Z → A</div>
     </div>
 
     <!-- <ul>
@@ -78,4 +91,4 @@
 </html>
 -->
 
-<script src="../../../public/assets/js/script.js"></script>
+<!-- <script src="../../../public/assets/js/script.js"></script> -->

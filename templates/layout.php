@@ -42,7 +42,7 @@
                                             <a href="home/index" class="dropdown-item item-anchor">Home Layout 1</a>
                                         </li>
                                         <li>
-                                            <a href="index.html" class="dropdown-item item-anchor">Home Layout 2 </a>
+                                            <a href="home/index" class="dropdown-item item-anchor">Home Layout 2 </a>
                                         </li>
                                     </ul>
                                 </li>

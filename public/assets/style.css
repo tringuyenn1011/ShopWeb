@@ -159,6 +159,17 @@ body {
 .filter-header {
   cursor: pointer; /* Đổi con trỏ chuột khi hover */
   position: relative; /* Định vị để dropdown nằm chính xác bên dưới */
+  align-items: center;
+  gap: 5px; /* Khoảng cách giữa chữ và mũi tên */
+}
+
+.arrow {
+  font-size: 12px; /* Kích thước mũi tên */
+  transition: transform 0.3s ease; /* Hiệu ứng xoay */
+}
+
+.filter-header.open .arrow {
+  transform: rotate(180deg); /* Xoay mũi tên khi mở dropdown */
 }
 
 .filter-dropdown {

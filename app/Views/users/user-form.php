@@ -38,8 +38,8 @@ if (isset($_SESSION['flash_message'])) {
             <label for="vip">Loại tài khoản (VIP):</label>
             <select id="vip" name="vip" required>
                 <option value="" disabled <?= !isset($user['vip']) ? 'selected' : '' ?>>Chọn loại tài khoản</option>
-                <option value="0" <?= isset($user['vip']) && $user['vip'] == 0 ? 'selected' : '' ?>>Thường</option>
-                <option value="1" <?= isset($user['vip']) && $user['vip'] == 1 ? 'selected' : '' ?>>VIP</option>
+                <option value="vip" <?= isset($user['vip']) && $user['vip'] == 'vip' ? 'selected' : '' ?>>VIP</option>
+                <option value="không" <?= isset($user['vip']) && $user['vip'] == 'không' ? 'selected' : '' ?>>Thường</option>
             </select><br>
 
         <input type="submit" value="<?= isset($user['id']) ? 'Update' : 'Create' ?>">

@@ -41,28 +41,30 @@ class ProductController extends Controller
             $this->processForm();
         } else {
             // Display the form for creating a new user            
-            $this->render('users\user-form', ['user' => []]);
+            $this->render('products\product-form', ['product' => []]);
         }
         
     }
 
     private function processForm(){
-            // // Retrieve form data
-            // $username = $_POST['username'];
-            // $password = $_POST['password'];
-            // $email = $_POST['email'];
+            // Retrieve form data
+            $productname = $_POST['productname'];
+            $category = $_POST['category'];
+            $price = $_POST['price'];
+            $detail = $_POST['detail'];
+            $urlimage = $_POST['urlimage'];
 
-            // // Call the model to create a new user
-            // $user = $this->productModel->createProduct($username, $password, $email);
+            // Call the model to create a new user
+            $product = $this->productModel->createProduct($productname, $category, $price, $detail, $urlimage);
 
-            // if ($user) {
-            //     // Redirect to the user list page or show a success message
-            //     header('Location: /user/index');
-            //     exit();
-            // } else {
-            //     // Handle the case where the user creation failed
-            //     echo 'User creation failed.';
-            // }
+            if ($product) {
+                // Redirect to the user list page or show a success message
+                header('Location: /product/index');
+                exit();
+            } else {
+                // Handle the case where the user creation failed
+                echo 'User creation failed.';
+            }
     }
        
 

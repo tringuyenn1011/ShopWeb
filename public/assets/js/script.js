@@ -33,49 +33,94 @@
 //     });
 // });
 document.addEventListener('DOMContentLoaded', function () {
-    const filterHeader = document.querySelector('.filter-header'); // Tiêu đề Category
-    const dropdown = document.getElementById('categoryFilter'); // Dropdown Category
+    const originalOrder = Array.from(document.querySelectorAll('tbody tr')).map(row => row.cloneNode(true)); // Lưu trạng thái ban đầu
+    
+    document.querySelectorAll('.filter-header').forEach(header => {
+        const filterName = header.getAttribute('data-filter');
+        const dropdown = document.getElementById(`${filterName}Filter`); // Dropdown tương ứng với filter-header
 
-    // Hiển thị dropdown khi hover vào tiêu đề
-    filterHeader.addEventListener('mouseenter', function () {
-        dropdown.style.display = 'block'; // Hiển thị dropdown
-        const rect = filterHeader.getBoundingClientRect(); // Lấy vị trí tiêu đề
-        dropdown.style.top = `${rect.bottom + 5}px`; // Vị trí dưới tiêu đề, thêm khoảng cách
-        dropdown.style.right = `${window.innerWidth - rect.right}px`; // Căn phải với cột category
-    });
-
-    // Ẩn dropdown khi rời khỏi tiêu đề hoặc dropdown
-    filterHeader.addEventListener('mouseleave', function () {
-        setTimeout(() => {
-            if (!dropdown.matches(':hover')) {
-                dropdown.style.display = 'none';
-            }
-        }, 200);
-    });
-
-    dropdown.addEventListener('mouseleave', function () {
-        dropdown.style.display = 'none'; // Ẩn dropdown
-    });
-
-    // Lọc các hàng trong bảng khi chọn giá trị từ dropdown
-    dropdown.addEventListener('click', function (event) {
-        const selectedValue = event.target.getAttribute('data-category'); // Lấy giá trị được chọn
-        if (!selectedValue) return;
-
-        document.querySelectorAll('tbody tr').forEach(row => {
-            const rowValue = row.querySelector('td:nth-child(3)').textContent.trim().toLowerCase(); // Giá trị category
-            row.style.display =
-                selectedValue === 'all' || rowValue === selectedValue.toLowerCase() ? '' : 'none';
+        // Hiển thị dropdown khi hover vào tiêu đề
+        header.addEventListener('mouseenter', function () {
+            dropdown.style.display = 'block'; // Hiển thị dropdown
+            header.classList.add('open'); // Thêm lớp open để xoay mũi tên
+            const rect = header.getBoundingClientRect(); // Lấy vị trí của header
+            dropdown.style.top = `${rect.bottom + 5}px`; // Vị trí dưới tiêu đề
+            dropdown.style.right = `${window.innerWidth - rect.right}px`; // Căn phải
         });
 
-        dropdown.style.display = 'none'; // Ẩn dropdown sau khi chọn
+        // Ẩn dropdown khi rời khỏi tiêu đề hoặc dropdown
+        header.addEventListener('mouseleave', function () {
+            setTimeout(() => {
+                if (!dropdown.matches(':hover')) {
+                    dropdown.style.display = 'none';
+                    header.classList.remove('open'); // Xóa lớp open
+                }
+            }, 200);
+        });
+
+        dropdown.addEventListener('mouseleave', function () {
+            dropdown.style.display = 'none'; // Ẩn dropdown
+            header.classList.remove('open'); // Xóa lớp open
+        });
+
+        // Lọc các hàng trong bảng khi chọn giá trị từ dropdown
+        dropdown.addEventListener('click', function (event) {
+            const selectedValue = event.target.getAttribute(`data-${filterName}`); // Lấy giá trị được chọn
+            if (!selectedValue) return;
+
+            const rows = Array.from(document.querySelectorAll('tbody tr'));
+            const tbody = document.querySelector('tbody');
+
+            if (filterName === 'category' || filterName === 'vip') {
+                // Lọc các hàng theo category hoặc vip
+                rows.forEach(row => {
+                    let rowValue;
+                    if (filterName === 'category') {
+                        rowValue = row.querySelector('td:nth-child(3)').textContent.trim().toLowerCase(); // Giá trị category
+                    } else if (filterName === 'vip') {
+                        rowValue = row.querySelector('td:nth-child(5)').textContent.trim().toLowerCase(); // Giá trị vip
+                    }
+                    row.style.display =
+                        selectedValue === 'all' || rowValue === selectedValue.toLowerCase() ? '' : 'none';
+                });
+            } else if (filterName === 'price') {
+                if (selectedValue === 'default') {
+                    // Khôi phục thứ tự mặc định
+                    tbody.innerHTML = '';
+                    originalOrder.forEach(row => tbody.appendChild(row.cloneNode(true)));
+                } else {
+                    // Sắp xếp theo Price
+                    rows.sort((a, b) => {
+                        const priceA = parseFloat(a.querySelector('td:nth-child(4)').textContent.trim()) || 0;
+                        const priceB = parseFloat(b.querySelector('td:nth-child(4)').textContent.trim()) || 0;
+                        return selectedValue === 'asc' ? priceA - priceB : priceB - priceA;
+                    });
+                    tbody.innerHTML = '';
+                    rows.forEach(row => tbody.appendChild(row));
+                }
+            } else if (filterName === 'name') {
+                if (selectedValue === 'default') {
+                    // Khôi phục thứ tự mặc định
+                    tbody.innerHTML = '';
+                    originalOrder.forEach(row => tbody.appendChild(row.cloneNode(true)));
+                } else {
+                    // Sắp xếp theo Họ và Tên
+                    rows.sort((a, b) => {
+                        const nameA = a.querySelector('td:nth-child(2)').textContent.trim().split(' ').pop().toLowerCase();
+                        const nameB = b.querySelector('td:nth-child(2)').textContent.trim().split(' ').pop().toLowerCase();
+                        return selectedValue === 'asc'
+                            ? nameA.localeCompare(nameB)
+                            : nameB.localeCompare(nameA);
+                    });
+                    tbody.innerHTML = '';
+                    rows.forEach(row => tbody.appendChild(row));
+                }
+            }
+
+            dropdown.style.display = 'none'; // Ẩn dropdown sau khi chọn
+        });
     });
 });
-
-
-
-
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
