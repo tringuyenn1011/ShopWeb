@@ -42,7 +42,7 @@
                                             <a href="home/index" class="dropdown-item item-anchor">Home Layout 1</a>
                                         </li>
                                         <li>
-                                            <a href="index.html" class="dropdown-item item-anchor">Home Layout 2 </a>
+                                            <a href="home/index" class="dropdown-item item-anchor">Home Layout 2 </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -61,10 +61,10 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="blog.php">Blog</a>
+                                    <a class="nav-link" href="home/blog">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contact</a>
+                                    <a class="nav-link" href="home/contact">Contact</a>
                                 </li>
                             </ul>
                         </div>

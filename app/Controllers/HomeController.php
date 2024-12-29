@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controller;
 use App\Models\User;
 use App\Models\Banner;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -35,6 +36,20 @@ class HomeController extends Controller
         $bannerModel = new Banner();
         $banners = $bannerModel->getAllBanners();
         $this->render('home/banner', ['banners' => $banners]);
+    }
+
+    public function productList(){
+        $productsModel = new Product();
+        $products = $this->productsModel->getAllProducts();
+        
+        $this->render('products\product-list', ['products' => $products]);
+    }
+
+    public function blog(){
+        $this->render('home/blog', []);
+    }
+    public function contact(){
+        $this->render('home/contact', []);
     }
     
 }
