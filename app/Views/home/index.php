@@ -1,7 +1,23 @@
 <?php
 
 session_start();
+
+function isUserLoggedIn() {
+    return isset($_SESSION['currentUser']) && !empty($_SESSION['currentUser']);
+}
+
+if (!isUserLoggedIn()) {
+    header('Location: /user/signin');
+    exit(); // Đảm bảo rằng mã dừng lại sau khi chuyển hướng
+}
+
+if (isset($_SESSION['flash_message'])) {
+    $message = $_SESSION['flash_message'];
+    unset($_SESSION['flash_message']);
+    // echo '<p style="color:red;">' . $message . '</p><br>';
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,10 +58,10 @@ session_start();
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
                                     <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownHome">
                                         <li>
-                                            <a href="index.html" class="dropdown-item item-anchor">Home Layout 1</a>
+                                            <a href="index" class="dropdown-item item-anchor">Home Layout 1</a>
                                         </li>
                                         <li>
-                                            <a href="index.html" class="dropdown-item item-anchor">Home Layout 2 </a>
+                                            <a href="index" class="dropdown-item item-anchor">Home Layout 2 </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -54,7 +70,8 @@ session_start();
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                                     <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
                                         <li>
-                                            <a href="/product/index" class="dropdown-item item-anchor">Management Products
+                                            <a href="/product/index" class="dropdown-item item-anchor">Management
+                                                Products
                                             </a>
                                         </li>
                                         <li>
@@ -65,10 +82,10 @@ session_start();
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="blog.php">Blog</a>
+                                    <a class="nav-link" href="home/blog">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contact</a>
+                                    <a class="nav-link" href="home/contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -76,18 +93,7 @@ session_start();
                 </div>
                 <div class="col-3 col-lg-auto">
                     <ul class="list-unstyled d-flex m-0">
-                        <!-- <li class="d-none d-lg-block">
-                            <form method="post" action="/user/logout">
-                                <input type="submit" name="logout" value="Logout">
-                            </form> -->
-                        <!-- <a href="../user/index" class="text-uppercase mx-3">Wishlist <span
-                                    class="wishlist-count">(0)</span>
-                            </a> -->
-                        <!-- </li>
-                        <li class="d-none d-lg-block">
-                            <a href="index.html" class="text-uppercase mx-3">Login
-                            </a>
-                        </li> -->
+
                         <?php
                         if (isset($_SESSION['currentUser'])) {
                             echo '<li class="d-none d-lg-block">
@@ -107,78 +113,19 @@ session_start();
             </div>
         </div>
     </nav>
-
     <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
                 <h4 class="text-uppercase">Promotional programs</h4>
             </div>
-            <!-- <div class="swiper product-swiper open-up" data-aos="zoom-out">
-                <div class="swiper-wrapper d-flex">
-                    <div class="swiper-slide">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="../../../public/assets/images/product-item-1.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="element-title text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Dark florish onepiece</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$95.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="../../../public/assets/images/product-item-2.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Baggy Shirt</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$55.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="product-item image-zoom-effect link-effect">
-                            <div class="image-holder position-relative">
-                                <a href="index.html">
-                                    <img src="../../../public/assets/images/product-item-3.jpg" alt="categories"
-                                        class="product-image img-fluid">
-                                </a>
-                                <div class="product-content">
-                                    <h5 class="text-uppercase fs-5 mt-3">
-                                        <a href="index.html">Cotton off-white shirt</a>
-                                    </h5>
-                                    <a href="#" class="text-decoration-none"
-                                        data-after="Add to cart"><span>$65.00</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <?php
-
             require_once 'banner.php';
+            require_once 'table-product.php';
             ?>
-
-
             <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
                 <h4 class="text-uppercase">List Products</h4>
                 <a href="index.html" class="btn-link">View All Products</a>
             </div>
-
         </div>
     </section>
 

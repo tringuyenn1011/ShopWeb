@@ -61,10 +61,10 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="blog.php">Blog</a>
+                                    <a class="nav-link" href="home/blog">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contact</a>
+                                    <a class="nav-link" href="home/contact">Contact</a>
                                 </li>
                             </ul>
                         </div>

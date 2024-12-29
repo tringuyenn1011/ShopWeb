@@ -27,7 +27,11 @@ $router->addRoute('/\/product\/delete\/(\d+)/', [new ProductController(), 'delet
 
 $router->addRoute('/\/user\/signin/', [new UserController(), 'signin']);
 $router->addRoute('/\/auth\/validate/', [new AuthenticationController(), 'authenticate']);
+$router->addRoute('/\/user\/register/', [new UserController(), 'create']);
 $router->addRoute('/\/user\/logout/', [new UserController(), 'logout']);
 
 $router->addRoute('/\/home\/index/', [new HomeController(), 'index']);
 $router->addRoute('/\/home\/banner/', [new HomeController(), 'banner']); 
+
+$router->addRoute('/\/home\/blog/', [new HomeController(), 'blog']);
+$router->addRoute('/\/home\/contact/', [new HomeController(), 'contact']);

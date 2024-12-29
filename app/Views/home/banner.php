@@ -12,9 +12,14 @@
 .slider {
     display: flex;
     overflow: hidden;
-    width: 700px;
-    height: 300px;
+    width: 80%;
+    height: 400px;
     position: relative;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: #f5f5f5;
+    5
 }
 
 .slide {

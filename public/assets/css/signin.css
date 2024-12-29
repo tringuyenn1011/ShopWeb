@@ -1,0 +1,56 @@
+/* Đảm bảo container chiếm toàn bộ chiều cao màn hình */
+.form-container {
+    display: flex;
+    flex-direction: column; /* Sắp xếp các form theo cột */
+    justify-content: center; /* Căn giữa theo trục dọc */
+    align-items: center; /* Căn giữa theo trục ngang */
+    min-height: 100vh; /* Chiều cao tối thiểu = chiều cao màn hình */
+    background-color: #f8f9fa; /* Màu nền nhẹ */
+    padding: 20px; /* Khoảng cách nội dung bên trong */
+    margin: 0; /* Loại bỏ khoảng cách bên ngoài */
+}
+
+/* Giữ nguyên hoặc sửa đổi các quy tắc form hiện tại nếu cần */
+.form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin: 10px 0; /* Khoảng cách giữa các form */
+}
+
+.form__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form__button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form__button:hover {
+    background-color: #2980b9;
+}
+
+.form__button--register {
+    background-color: #2ecc71;
+}
+
+.form__text {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}

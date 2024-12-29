@@ -77,8 +77,8 @@
             </li>
         <?php endforeach; ?>
     </ul> -->
-    
-    <?php
+
+<?php
     session_start();
 
     if(isset($_SESSION['flash_message'])) {
@@ -88,7 +88,7 @@
     }
     
     ?>
-    <a href="/product/create">Add Product</a>
+<a href="/product/create">Add Product</a>
 <?php $content = ob_get_clean(); ?>
 <?php 
     
