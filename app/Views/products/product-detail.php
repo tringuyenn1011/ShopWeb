@@ -12,6 +12,8 @@
                 <p><strong>Giá:</strong> <span id="modalPrice"></span></p>
                 <p><strong>Mô tả:</strong> <span id="modalDetail"></span></p>
                 <p><strong>Link ảnh:</strong> <span id="modalUrlimage"></span></p>
+                <p><strong>Ảnh sản phẩm:</strong></p>
+                    <img id="modalImage" src="" alt="Ảnh sản phẩm" style="max-width: 100%; height: auto;">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

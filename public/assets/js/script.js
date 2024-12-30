@@ -137,7 +137,19 @@ document.addEventListener('DOMContentLoaded', function () {
             for (const key in dataAttributes) {
                 const modalElement = document.getElementById(`modal${capitalizeFirstLetter(key)}`);
                 if (modalElement) {
-                    modalElement.textContent = dataAttributes[key];
+                    if (key === 'urlimage') {
+                        // Hiển thị link dưới dạng văn bản
+                        modalElement.textContent = dataAttributes[key];
+                
+                        // Xử lý hiển thị ảnh
+                        const imageElement = document.getElementById('modalImage');
+                        if (imageElement) {
+                            imageElement.src = dataAttributes[key]; // Gán src cho thẻ img
+                            imageElement.alt = 'Ảnh sản phẩm'; // Đặt alt cho ảnh
+                        }
+                    } else {
+                        modalElement.textContent = dataAttributes[key];
+                    }
                 }
             }
 
