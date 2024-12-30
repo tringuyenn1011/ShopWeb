@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+function isUserLoggedIn() {
+    return isset($_SESSION['currentUser']) && !empty($_SESSION['currentUser']);
+}
+
+
+
+if (isset($_SESSION['flash_message'])) {
+    $message = $_SESSION['flash_message'];
+    unset($_SESSION['flash_message']);
+    echo '<p style="color:red;">' . $message . '</p><br>';
+}
+?>
+
 <?php ob_start(); ?>
 
 <style>
@@ -60,7 +76,7 @@ a:hover {
             </tr>
             <tr>
                 <td>Dương Thị Trà My</td>
-                <td><a href="https://www.facebook.com/trisnguyennn1011/friends/" target="_blank">Facebook</a></td>
+                <td><a href="https://www.facebook.com/karry.duong.106" target="_blank">Facebook</a></td>
                 <td>0862645589</td>
             </tr>
             <tr>
@@ -71,8 +87,6 @@ a:hover {
         </tbody>
     </table>
 </body>
-
-
 
 <?php $content = ob_get_clean(); ?>
 <?php include (__DIR__ . '/../../../templates/layout.php'); ?>

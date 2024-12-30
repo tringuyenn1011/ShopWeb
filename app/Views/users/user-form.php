@@ -4,7 +4,7 @@
 session_start();
 if (isset($_SESSION['flash_message'])) {
     echo "<script>alert('" . $_SESSION['flash_message'] . "');</script>";
-    unset($_SESSION['flash_message']); // Xóa thông báo sau khi đã hiển thị
+    unset($_SESSION['flash_message']); 
 }
 ?>
 
@@ -56,7 +56,8 @@ if (isset($_SESSION['flash_message'])) {
             <select id="vip" name="vip" class="form__select" required>
                 <option value="" disabled <?= !isset($user['vip']) ? 'selected' : '' ?>>Chọn loại tài khoản</option>
                 <option value="vip" <?= isset($user['vip']) && $user['vip'] == 'vip' ? 'selected' : '' ?>>VIP</option>
-                <option value="không" <?= isset($user['vip']) && $user['vip'] == 'không' ? 'selected' : '' ?>>Thường</option>
+                <option value="không" <?= isset($user['vip']) && $user['vip'] == 'không' ? 'selected' : '' ?>>Thường
+                </option>
             </select><br>
 
             <input type="submit" value="<?= isset($user['id']) ? 'Update' : 'Create' ?>" class="form__button">

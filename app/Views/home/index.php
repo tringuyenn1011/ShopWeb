@@ -6,15 +6,10 @@ function isUserLoggedIn() {
     return isset($_SESSION['currentUser']) && !empty($_SESSION['currentUser']);
 }
 
-if (!isUserLoggedIn()) {
-    header('Location: /user/signin');
-    exit(); // Đảm bảo rằng mã dừng lại sau khi chuyển hướng
-}
 
 if (isset($_SESSION['flash_message'])) {
     $message = $_SESSION['flash_message'];
     unset($_SESSION['flash_message']);
-    // echo '<p style="color:red;">' . $message . '</p><br>';
 }
 ?>
 
@@ -53,18 +48,9 @@ if (isset($_SESSION['flash_message'])) {
 
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" id="dropdownHome"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
-                                    <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownHome">
-                                        <li>
-                                            <a href="index" class="dropdown-item item-anchor">Home Layout 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="index" class="dropdown-item item-anchor">Home Layout 2 </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <a href="home/index" class="nav-link active">
+                                    Home
+                                </a>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="dropdownShop"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
@@ -119,12 +105,14 @@ if (isset($_SESSION['flash_message'])) {
                 <h4 class="text-uppercase">Promotional programs</h4>
             </div>
             <?php
-            require_once 'banner.php';
-            require_once 'table-product.php';
+            include_once 'banner.php';
+            // require_once '../products/product-list.php';
+            //require_once 'table-product.php'; 
+            
             ?>
             <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
                 <h4 class="text-uppercase">List Products</h4>
-                <a href="index.html" class="btn-link">View All Products</a>
+                <!-- <a href="index.html" class="btn-link">View All Products</a> -->
             </div>
         </div>
     </section>
@@ -137,5 +125,6 @@ if (isset($_SESSION['flash_message'])) {
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="../../../public/assets/js/script.min.js"></script>
 </body>
+
 
 </html>

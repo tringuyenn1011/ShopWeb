@@ -1,69 +1,41 @@
-<h1>Product List</h1>
-<div class="table-responsive">
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Product Name</th>
-                <th class="filter-header" data-filter="category">Category</th>
-                <th>Price</th>
-                <th>Detail</th>
-                <th>UrlImage</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
+<head>
+    <title>Product Grid</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container my-5">
+        <!-- <h1 class="text-center mb-4">Danh Sách Sản Phẩm</h1> -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             <?php if (!empty($products)): ?>
             <?php foreach ($products as $product): ?>
-            <tr>
-                <td><?php echo htmlspecialchars($product['id']); ?></td>
-                <td><?php echo htmlspecialchars($product['productname']); ?></td>
-                <td><?php echo htmlspecialchars($product['category']); ?></td>
-                <td><?php echo htmlspecialchars($product['price']); ?></td>
-                <td><?php echo htmlspecialchars($product['detail']); ?></td>
-                <td>
-                    <?php if (!empty($product['urlimage'])): ?>
-                    <img src="<?php echo htmlspecialchars($product['urlimage']); ?>" alt="Product Image"
-                        style="width: 100px; height: auto;">
-                    <?php else: ?>
-                    No Image
-                    <?php endif; ?>
-                </td>
-                <td>
-                    <!-- Add your action buttons or links here -->
-                </td>
-            </tr>
+            <div class="col">
+                <div class="card h-100">
+                    <style></style>
+                    <img src="<?php echo htmlspecialchars($product['urlimage']); ?>" class="card-img-top"
+                        alt="Product Image" style="width: 100%;height:350px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo htmlspecialchars($product['productname']); ?></h5>
+                        <p class="card-text">Giá: <strong><?php echo htmlspecialchars($product['price']); ?>
+                                đ</strong>
+                        </p>
+                        <a href="#" class="btn btn-info btn-sm view-detail" data-id="<?= $product['id'] ?>"
+                            data-productName="<?= $product['productname'] ?>"
+                            data-category="<?= $product['category'] ?>" data-price="<?= $product['price'] ?>"
+                            data-detail="<?= $product['detail'] ?>" data-urlImage="<?= $product['urlimage'] ?>">Chi
+                            tiết</a>
+                    </div>
+                </div>
+            </div>
             <?php endforeach; ?>
             <?php else: ?>
-            <tr>
-                <td colspan="7">No products available</td>
-            </tr>
+            <p class="text-center">Không có sản phẩm nào.</p>
             <?php endif; ?>
-        </tbody>
-    </table>
-</div>
+        </div>
+    </div>
+    <?php
 
-<!-- Dropdowns -->
-<div id="categoryFilter" class="filter-dropdown" style="display: none;">
-    <div data-category="all">All</div>
-    <div data-category="shirt">Shirt</div>
-    <div data-category="pant">Pant</div>
-    <div data-category="hat">Hat</div>
-</div>
-
-<!-- <ul>
-        <?php foreach ($products as $product): ?>
-            <li>
-                
-                <a href="/product/show/<?= $product['id'] ?>">
-                    <?= $product['productname'] ?>
-                </a>
-                
-                | <a href="/product/update/<?= $product['id'] ?>">Edit</a>
-                | <a href="/product/delete/<?= $product['id'] ?>">Delete</a>
-            </li>
-        <?php endforeach; ?>
-    </ul> -->
-
-
-<a href="/product/create">Add Product</a>
+include __DIR__ . '/../products/product-detail.php';
+?>
+</body>

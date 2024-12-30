@@ -10,10 +10,10 @@ use App\Controllers\ProductController;
 $router = new Router();
 
 // Add routes
-$router->addRoute('/\//', [new UserController(), 'index']);
+$router->addRoute('/\//', [new HomeController(), 'index']);
+
 $router->addRoute('/\/user\/index/', [new UserController(), 'userList']);
 $router->addRoute('/\/product\/index/', [new ProductController(), 'productList']);
-//$router->addRoute('/\/user/', [new UserController(), 'index']);
 $router->addRoute('/\/user\/show\/(\d+)/', [new UserController(), 'show']);
 
 $router->addRoute('/\/user\/create/', [new UserController(), 'create']);
@@ -31,7 +31,7 @@ $router->addRoute('/\/user\/register/', [new UserController(), 'create']);
 $router->addRoute('/\/user\/logout/', [new UserController(), 'logout']);
 
 $router->addRoute('/\/home\/index/', [new HomeController(), 'index']);
-$router->addRoute('/\/home\/banner/', [new HomeController(), 'banner']); 
+$router->addRoute('/\/home\/table-product/', [new HomeController(), 'productList']); 
 
 $router->addRoute('/\/home\/blog/', [new HomeController(), 'blog']);
 $router->addRoute('/\/home\/contact/', [new HomeController(), 'contact']);
