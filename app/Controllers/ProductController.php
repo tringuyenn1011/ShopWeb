@@ -20,7 +20,6 @@ class ProductController extends Controller
 
     public function productList()
     {
-        // Fetch all users and display them in a view
         $products = $this->productModel->getAllProducts();
         
         $this->render('products\product-list', ['products' => $products]);

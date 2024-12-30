@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Controller;
@@ -9,7 +8,6 @@ use App\Models\Product;
 
 class HomeController extends Controller
 {
-
     private $homeModel;
 
     public function __construct()
@@ -21,29 +19,18 @@ class HomeController extends Controller
         $bannerModel = new Banner();
         $banners = $bannerModel->getAllBanners();
         $this->render('home/index', ['banners' => $banners]);
-    }
-    // public function index(){
-    //     $bannerModel = new Banner();
-    //     $banners = $bannerModel->getAllBanners();
-    //     $this->render('home/index', ['banners' => $banners]);
-    // }
-
-    // public function homeDisplay()
-    // {
-    //     $this->render('users\user-list', []);
-    // }
-    public function banner(){
-        $bannerModel = new Banner();
-        $banners = $bannerModel->getAllBanners();
-        $this->render('home/banner', ['banners' => $banners]);
-    }
-
-    public function productList(){
         $productsModel = new Product();
-        $products = $this->productsModel->getAllProducts();
-        
-        $this->render('products\product-list', ['products' => $products]);
+        $products = $productsModel->getAllProducts();
+        $this->render('home/table-product', ['products' => $products]);
     }
+    
+
+    // public function productList()
+    // {
+    //     $productsModel = new Product();
+    //     $products = $productsModel->getAllProducts();
+    //     $this->render('home/table-product', ['products' => $products]);
+    // }
 
     public function blog(){
         $this->render('home/blog', []);
@@ -53,6 +40,5 @@ class HomeController extends Controller
     }
     
 }
-
 
 ?>

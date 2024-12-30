@@ -1,6 +1,20 @@
+<?php
+session_start();
+
+function isUserLoggedIn() {
+    return isset($_SESSION['currentUser']) && !empty($_SESSION['currentUser']);
+}
+
+
+if (isset($_SESSION['flash_message'])) {
+    $message = $_SESSION['flash_message'];
+    unset($_SESSION['flash_message']);
+    echo '<p style="color:red;">' . $message . '</p><br>';
+}
+?>
+
 <?php ob_start(); ?>
 
-<h1>Blog</h1>
 
 <head>
     <meta charset="UTF-8">
@@ -56,34 +70,61 @@
         padding: 1rem;
         background-color: #333;
         color: #fff;
-        position: fixed;
         width: 100%;
         bottom: 0;
+        position: fixed;
     }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>My Simple Blog</h1>
-    </header>
-    <div class="container">
-        <article class="post">
-            <h2>Bài Viết 1</h2>
-            <p class="meta">Ngày đăng: 28/12/2024 | Tác giả: Minh</p>
-            <p>Đây là nội dung của bài viết đầu tiên trên blog của tôi. Tôi sẽ chia sẻ về những điều thú vị trong cuộc
-                sống.</p>
-        </article>
-        <article class="post">
-            <h2>Bài Viết 2</h2>
-            <p class="meta">Ngày đăng: 27/12/2024 | Tác giả: My</p>
-            <p>Bài viết thứ hai sẽ nói về những trải nghiệm cá nhân của tôi trong hành trình khám phá thế giới.</p>
-        </article>
-        <article class="post">
-            <h2>Bài Viết 3</h2>
-            <p class="meta">Ngày đăng: 26/12/2024 | Tác giả: Tri</p>
-            <p>Trong bài viết này, tôi muốn chia sẻ những mẹo vặt và kinh nghiệm trong cuộc sống hàng ngày.</p>
-        </article>
+
+
+    <div class="card" style="margin:10px">
+        <div class="card-body ">
+            <header>
+                <h1>My Simple Blog</h1>
+            </header>
+            <div class="container">
+                <article class="post">
+                    <h2>Bài Viết 1</h2>
+                    <p class="meta">Ngày đăng: 28/12/2024 | Tác giả: Minh</p>
+                    <p>Đây là nội dung của bài viết đầu tiên trên blog của tôi. Tôi sẽ chia sẻ về những điều thú vị
+                        trong cuộc
+                        sống.</p>
+                </article>
+                <article class="post">
+                    <h2>Bài Viết 2</h2>
+                    <p class="meta">Ngày đăng: 27/12/2024 | Tác giả: My</p>
+                    <p>Bài viết thứ hai sẽ nói về những trải nghiệm cá nhân của tôi trong hành trình khám phá thế giới.
+                    </p>
+                </article>
+                <article class="post">
+                    <h2>Bài Viết 3</h2>
+                    <p class="meta">Ngày đăng: 26/12/2024 | Tác giả: Tri</p>
+                    <p>Trong bài viết này, tôi muốn chia sẻ những mẹo vặt và kinh nghiệm trong cuộc sống hàng ngày.</p>
+                </article>
+                <article class="post">
+                    <h2>Bài Viết 4</h2>
+                    <p class="meta">Ngày đăng: 28/12/2024 | Tác giả: Minh</p>
+                    <p>Đây là nội dung của bài viết đầu tiên trên blog của tôi. Tôi sẽ chia sẻ về những điều thú vị
+                        trong cuộc
+                        sống.</p>
+                </article>
+                <article class="post">
+                    <h2>Bài Viết 5</h2>
+                    <p class="meta">Ngày đăng: 27/12/2024 | Tác giả: My</p>
+                    <p>Bài viết thứ hai sẽ nói về những trải nghiệm cá nhân của tôi trong hành trình khám phá thế giới.
+                    </p>
+                </article>
+                <article class="post">
+                    <h2>Bài Viết 6</h2>
+                    <p class="meta">Ngày đăng: 26/12/2024 | Tác giả: Tri</p>
+                    <p>Trong bài viết này, tôi muốn chia sẻ những mẹo vặt và kinh nghiệm trong cuộc sống hàng ngày.</p>
+                </article>
+            </div>
+
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 My Simple Blog</p>

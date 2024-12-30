@@ -9,8 +9,8 @@
     <!-- Include Bootstrap CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-        <link rel="stylesheet" href="../../../public/assets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../../../public/assets/style.css">
 </head>
 
 <body class="homepage">
@@ -34,28 +34,21 @@
 
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" id="dropdownHome"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
-                                    <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownHome">
-                                        <li>
-                                            <a href="home/index" class="dropdown-item item-anchor">Home Layout 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="home/index" class="dropdown-item item-anchor">Home Layout 2 </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <a href="/home/index" class="nav-link active">
+                                    Home
+                                </a>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="dropdownShop"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                                     <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
                                         <li>
-                                            <a href="/product/index" class="dropdown-item item-anchor">Management Products
+                                            <a href="/product/index" class="dropdown-item item-anchor">Management
+                                                Products
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/user/index" class="dropdown-item item-anchor">Management Users </a>
+                                            <a href="/user/index" class="dropdown-item item-anchor">Management Users
+                                            </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -70,9 +63,24 @@
                         </div>
                     </div>
                 </div>
+                
+
                 <div class="col-3 col-lg-auto">
                     <ul class="list-unstyled d-flex m-0">
-                       
+                        <?php
+                        if (isset($_SESSION['currentUser'])) {
+                            echo '<li class="d-none d-lg-block">
+                            <form method="post" action="/user/logout">
+                                <input type="submit" name="logout" value="Logout">
+                            </form>
+                            </li>';
+                        } else {
+                            echo '<li class="d-none d-lg-block">
+                            <a href="/user/signin" class="text-uppercase mx-3">Login</a>
+                            </li>';
+                        }
+                        ?>
+
                     </ul>
                 </div>
             </div>
@@ -91,6 +99,3 @@
 </body>
 
 </html>
-
-
-
