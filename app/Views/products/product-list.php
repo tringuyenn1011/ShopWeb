@@ -23,12 +23,14 @@
                     <td><?php echo ($product['price']); ?></td>
                     <td><?php echo ($product['detail']); ?></td>
                     <td>
-                        <?php if (!empty($product['urlimage'])): ?>
-                            <img src="<?php echo htmlspecialchars($product['urlimage']); ?>" alt="Product Image" style="width: 100px; height: auto;">
-                        <?php else: ?>
-                            No Image
-                        <?php endif; ?>
-                    </td>
+                    <?php if (!empty($product['urlimage'])): ?>
+                        <img src="<?php echo htmlspecialchars($product['urlimage']); ?>" 
+                             alt="Product Image" 
+                             style="width: 100px; height: 120px; border: 1px solid #ddd; border-radius: 5px;">
+                    <?php else: ?>
+                        <span style="color: gray;">No Image</span>
+                    <?php endif; ?>
+                </td>
                     <td>
                         <a href="#" 
                             class="btn btn-info btn-sm view-detail" 

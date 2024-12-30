@@ -40,7 +40,7 @@ class HomeController extends Controller
 
     public function productList(){
         $productsModel = new Product();
-        $products = $this->productsModel->getAllProducts();
+        $products = $this->$productsModel->getAllProducts();
         
         $this->render('products\product-list', ['products' => $products]);
     }
